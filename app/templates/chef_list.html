@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!-- templates/chefs/chef_list.html -->
+{% block content %}
+    <!-- Asosiy kontent -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Bizning Oshpazlar</h1>
+            <a href="{% url 'chef_add' %}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Yangi Oshpaz Qo'shish
+            </a>
+        </div>
+
+        <!-- Oshpazlar ro'yxati -->
+        <div class="row">
+            {% for chef in chef_list %}
+                <!-- Birinchi oshpaz (yangi dizayn namunasi) -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="card-title mb-1">{{chef.full_name}}</h5>
+                                <div>
+                                    <!-- Tahrirlash va o'chirish uchun piktogrammalar -->
+                                    <a href="{% url 'chef_update' chef.id %}" class="text-secondary me-2" title="Tahrirlash"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="{% url 'chef_delete' chef.id %}" class="text-danger" title="O'chirish"><i class="bi bi-trash"></i></a>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                            <span class="badge bg-success">{{chef.mutaxassislik}}</span>
+                            </div>
+                            <p class="card-text text-muted">
+                            {{chef.tajriba}}
+                            </p>
+                            <a href="{% url 'chef_info' chef.id %}" class="btn btn-outline-primary mt-auto">Profilni ko'rish</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

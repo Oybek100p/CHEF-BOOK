@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+<!-- templates/chefs/chef_confirm_delete.html -->
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>O'chirishni Tasdiqlash - ChefBook</title>
+</head>
+<body>
+
+    <!-- Navigatsiya paneli -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container"><a class="navbar-brand" href="{% url 'chefs' %}">ChefBook</a></div>
+    </nav>
+
+    <!-- Asosiy kontent -->
+    {% block content %}
+        <div class="alert alert-danger">
+            <h4 class="alert-heading">Diqqat!</h4>
+            <p>Siz haqiqatdan ham <strong>{{chef.full_name}}</strong> ismli oshpaz profilini o'chirmoqchimisiz?</p>
+            <hr>
+            <p class="mb-0">Bu amalni bekor qilib bo'lmaydi.</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Django'da bu yerga {% csrf_token %} qo'shiladi -->
+            <button type="submit" class="btn btn-danger">Ha, o'chirish</button>
+            <a href="{% url 'chefs' %}" class="btn btn-secondary">Yo'q, bekor qilish</a>
+        </form>
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">© 2025 ChefBook</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

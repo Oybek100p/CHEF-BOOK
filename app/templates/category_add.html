@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Yangi Kategoriya Qo'
+    
+    
+    shish</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Saqlash</button>
+    <a href="{% url 'categories' %}" class="btn btn-secondary">Bekor qilish</a>
+</form>
+{% endblock %}

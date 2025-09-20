@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Retsept Tahrirlash</h1>
+    <hr>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="id_nomi" class="form-label">Retsept Nomi</label>
+            {{ form.nomi }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_tavsif" class="form-label">Tavsif</label>
+            {{ form.tavsif}}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_ingredientlar" class="form-label">Ingredientlar</label>
+            {{ form.ingredientlar}}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_kategoriya" class="form-label">Kategoriya</label>
+            {{ form.kategoriya}}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_chef" class="form-label">Muallif (Oshpaz)</label>
+            {{ form.chef}}
+        </div>
+
+        <button type="submit" class="btn btn-success">Saqlash</button>
+        <a href="{% url 'recipes' %}" class="btn btn-secondary">Bekor qilish</a>
+    </form>
+</div>
+{% endblock %}

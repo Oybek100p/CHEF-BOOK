@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+<!-- templates/chefs/chef_form.html -->
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Oshpaz Tahrirlash - ChefBook</title>
+</head>
+    <!-- Asosiy kontent -->
+    {% block content %}
+        <!-- Sarlavha dinamik bo'lishi mumkin: "Yangi Oshpaz" yoki "Oshpazni Tahrirlash" -->
+        <h1>Oshpaz Tahrirlash</h1>
+        <hr>
+        <!-- Oshpaz ma'lumotlarini kiritish formasi -->
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Django'da bu yerga {% csrf_token %} qo'shiladi -->
+            <div class="mb-3">
+                <label for="ism" class="form-label">Ism va Familiya</label>
+                <input type="text" class="form-control" id="ism" name="full_name" placeholder="Masalan: Alisher Usmonov">
+            </div>
+            <div class="mb-3">
+                <label for="mutaxassislik" class="form-label">Mutaxassislik</label>
+                <select id="mutaxassislik" name="mutaxassislik" class="form-control">
+                <option value=""> Tanlang </option>
+                <option value="Milliy oshpazlik">Milliy oshpazlik</option>
+                <option value="Shirinlik">Shirinlik</option>
+                <option value="Salat">Salat</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="tajriba" class="form-label">Tajriba (yillarda)</label>
+                <input type="number" class="form-control" id="tajriba" name="tajriba" placeholder="Masalan: 5">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label" >Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com">
+            </div>
+            <div class="mb-3">
+                <label for="telefon" class="form-label">Telefon raqami</label>
+                <input type="tel" class="form-control" id="telefon" name="telefon" placeholder="+998 XX YYY ZZ WW">
+            </div>
+            <div class="mb-3">
+                <label for="bio" class="form-label">Biografiya (qisqacha)</label>
+                <textarea class="form-control" id="bio" name="bio" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-success">Saqlash</button>
+            <a href="{% url 'chefs' %}" class="btn btn-secondary">Bekor qilish</a>
+        </form>
+    {% endblock %}
+
+ 
+

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+<!-- templates/chefs/chef_detail.html -->
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Anvar Nosirov - Oshpaz Profili</title>
+</head>
+<body>
+
+    <!-- Navigatsiya paneli -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container"><a class="navbar-brand" href="{% url 'chefs' %}">ChefBook</a></div>
+    </nav>
+
+    <!-- Asosiy kontent -->
+    {% block content %}
+        <!-- Oshpaz haqida asosiy ma'lumot -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1 class="card-title">{{ chef.full_name }}</h1>
+                        <p class="lead"><strong>Mutaxassisligi:</strong>{{ chef.mutaxassislik }}</p>
+                        <p><strong>Tajribasi:</strong>{{ chef.tajriba }} yil</p>
+                        <p><strong>Email:</strong>{{ chef.email }}</p>
+                        <p><strong>Telefon:</strong>{{ chef.telefon }}</p>
+                        <hr>
+                        <h5>Biografiya</h5>
+                        <p>{{ chef.bio }}</p>
+                        <!-- Tahrirlash va o'chirish tugmalari -->
+                        <a href="{% url 'chef_update' chef.id %}" class="text-secondary me-2" title="Tahrirlash"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{% url 'chef_delete' chef.id %}" class="text-danger" title="O'chirish"><i class="bi bi-trash"></i></a>
+                        <a href="{% url 'chefs' %}" class="btn btn-secondary">Orqaga</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oshpazning retseptlari
+        <h3 class="mt-5">Ushbu oshpazning retseptlari</h3>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Toshkent Oshi</h5>
+                    <small>1 kun oldin</small>
+                </div>
+                <p class="mb-1">Bu oshpazning eng mashhur retsepti.</p>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Qozon Kabob</h5>
+                    <small>3 kun oldin</small>
+                </div>
+                <p class="mb-1">Go'shtli taomlar qiroli.</p>
+            </a>
+        </div> -->
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">© 2025 ChefBook</div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

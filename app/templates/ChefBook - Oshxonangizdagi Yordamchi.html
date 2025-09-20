@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>"{{ object.nomi }}" kategoriyasini o'chirmoqchimisiz?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Ha, o'hirish</button>
+    <a href="{% url 'categories' %}" class="btn btn-secondary">Bekor qilish</a>
+</form>
+{% endblock %}
